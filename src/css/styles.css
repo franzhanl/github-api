@@ -103,6 +103,24 @@ main {
   width: 50%;
 }
 
+.container .profile-data .info .follows{
+  display: flex;
+  justify-content: center;
+}
+
+.container .profile-data .info .follows div{
+  padding: 20px;
+}
+
+.container .profile-data .info .follows div span{
+  padding: 2px;
+  border-bottom: 1px solid #b5b6b8;
+}
+
+.container .profile-data .info .follows div p{
+  padding: 5px;
+}
+
 .container .profile-data .info img{
   width: 50%;
   border-radius: 50%;
