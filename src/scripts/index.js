@@ -1,5 +1,6 @@
 import { getUser } from '/src/scripts/services/user.js'
 import { getRepositories } from '/src/scripts/services/repositories.js'
+import { getEvents } from '/src/scripts/services/events.js';
 
 //OBJECTS
 import { user } from '/src/scripts/objects/user.js'
@@ -32,7 +33,6 @@ function validateEmptyInput(userName){
 async function getUserData(userName){
 
     const userResponse = await getUser(userName)
-    console.log(userResponse)
     if(userResponse.message === "Not Found"){
         screen.renderNotFound()
         return
@@ -44,4 +44,32 @@ async function getUserData(userName){
     user.setRepositories(repositoriesResponse)
 
     screen.renderUser(user)
+
+    // Events
+    let eventsData = await getEvents(userName)
+    console.log(eventsData)
+   
+    let eventItens = ''
+    eventsData.forEach((event) => {
+        let eventCommitMessage = ''
+        let eventName = ''
+
+        eventName += event.repo.name
+
+        if (event.payload.commits){
+            event.payload.commits.forEach( eventCommit => {
+                eventCommitMessage += ` <span>- ${eventCommit.message} </span>`   
+            })
+        }else{
+            eventCommitMessage += `- Novo branch`
+        }
+
+        eventItens += `<li><strong>${eventName}</strong> <div>${eventCommitMessage}</div></li>`
+
+    });
+
+    document.querySelector('.profile-data').innerHTML += `<div class="events" > 
+                                                            <h2>Eventos</h2>
+                                                            <ul>${eventItens}</ul>
+                                                        </div>`
 }
