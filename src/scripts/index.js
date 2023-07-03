@@ -39,37 +39,12 @@ async function getUserData(userName){
     }
 
     const repositoriesResponse = await getRepositories(userName)
-
+    const eventsResponse = await getEvents(userName)
+    console.log(repositoriesResponse)
     user.setInfo(userResponse)
     user.setRepositories(repositoriesResponse)
+    user.setEvents(eventsResponse)
 
     screen.renderUser(user)
 
-    // Events
-    let eventsData = await getEvents(userName)
-    console.log(eventsData)
-   
-    let eventItens = ''
-    eventsData.forEach((event) => {
-        let eventCommitMessage = ''
-        let eventName = ''
-
-        eventName += event.repo.name
-
-        if (event.payload.commits){
-            event.payload.commits.forEach( eventCommit => {
-                eventCommitMessage += ` <span>- ${eventCommit.message} </span>`   
-            })
-        }else{
-            eventCommitMessage += `- Novo branch`
-        }
-
-        eventItens += `<li><strong>${eventName}</strong> <div>${eventCommitMessage}</div></li>`
-
-    });
-
-    document.querySelector('.profile-data').innerHTML += `<div class="events" > 
-                                                            <h2>Eventos</h2>
-                                                            <ul>${eventItens}</ul>
-                                                        </div>`
 }
