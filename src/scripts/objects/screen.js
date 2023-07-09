@@ -70,7 +70,7 @@ const screen = {
 
     },
     renderNotFound(){
-        this.userProfile.innerHTML += `<h2>Usuário não encontrado</h2>`                                  
+        this.userProfile.innerHTML = `<h2>Usuário não encontrado</h2>`                                  
     }
 }
 
