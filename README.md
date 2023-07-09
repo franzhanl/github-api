@@ -11,9 +11,9 @@ O projeto é um desafio frontend proporcionado pelo Dev em Dobro, ele faz uso da
 
 ## Preview
 
-![Home](src/image/home.png.png)
+![Home](src/image/home.png)
 
-![Informações do usuario](src/image/search-user.png.png)
+![Informações do usuario](src/image/search-user.png)
 
 ![Erro de usuario](src/image/error-user.png)
 
