@@ -11,9 +11,12 @@ O projeto é um desafio frontend proporcionado pelo Dev em Dobro, ele faz uso da
 
 ## Preview
 
+### Tela inicial
 ![Home](src/image/home.png)
 
+### Pesquisando usuáro
 ![Informações do usuario](src/image/search-user.png)
 
+### Usuário não existente
 ![Erro de usuario](src/image/error-user.png)
 
